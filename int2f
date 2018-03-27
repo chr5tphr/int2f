@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+from argparse import ArgumentParser
+from math import ceil,log
+
+parser = ArgumentParser()
+
+parser.add_argument('int',type=int)
+parser.add_argument('output')
+
+args = parser.parse_args()
+
+with open(args.output,'bw') as fd:
+  fd.write(args.int.to_bytes(ceil(log(args.int)/log(2)/8),'big'))
+  fd.close()
+
